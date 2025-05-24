@@ -23,11 +23,11 @@ st.markdown("""
 # API Anahtarı
 TMDB_API_KEY = st.secrets["TMDB_API_KEY"]
 
-# ✅ Veri yükleme
 @st.cache_resource
 def load_data():
+    ratings_url = "https://www.dropbox.com/scl/fi/efdul16jzb1fj1w85b483/ratings.dat?rlkey=miy0rkhrm7bgah07o7smnoo4d&dl=1"
     ratings = pd.read_csv(
-        "data/ratings.dat", sep="::", engine="python",
+        ratings_url, sep="::", engine="python",
         names=["user_id", "movie_id", "rating", "timestamp"],
         encoding="latin-1"
     )
