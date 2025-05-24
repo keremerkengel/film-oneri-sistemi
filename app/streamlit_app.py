@@ -26,13 +26,15 @@ TMDB_API_KEY = st.secrets["TMDB_API_KEY"]
 @st.cache_resource
 def load_data():
     ratings_url = "https://www.dropbox.com/scl/fi/efdul16jzb1fj1w85b483/ratings.dat?rlkey=miy0rkhrm7bgah07o7smnoo4d&dl=1"
+    movies_url = "https://www.dropbox.com/scl/fi/jt70tz7h35zs8786cckiy/movies.dat?rlkey=0j9tobm41fcyb2evz4q0eznfd&dl=1"
+
     ratings = pd.read_csv(
         ratings_url, sep="::", engine="python",
         names=["user_id", "movie_id", "rating", "timestamp"],
         encoding="latin-1"
     )
     movies = pd.read_csv(
-        "data/movies.dat", sep="::", engine="python",
+        movies_url, sep="::", engine="python",
         names=["movie_id", "title", "genres"],
         encoding="latin-1"
     )
